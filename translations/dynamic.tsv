@@ -1,0 +1,21 @@
+en	fr	es	de	it	pt
+^Chapter (\d+)$	Chapitre {1}	Capítulo {1}	Kapitel {1}	Capitolo {1}	Capítulo {1}
+^Challenge (\d+)$	Défi {1}	Desafío {1}	Herausforderung {1}	Sfida {1}	Desafio {1}
+^Level (\d+)$	Niveau {1}	Nivel {1}	Stufe {1}	Livello {1}	Nível {1}
+^Players : (\d+)$	Joueurs : {1}	Jugadores: {1}	Spieler: {1}	Giocatori: {1}	Jogadores: {1}
+^Player (\d+)$	Joueur {1}	Jugador {1}	Spieler {1}	Giocatore {1}	Jogador {1}
+^Team (\d+)$	Équipe {1}	Equipo {1}	Team {1}	Squadra {1}	Equipe {1}
+^Handicap \+(\d+)$	Handicap +{1}	Hándicap +{1}	Handicap +{1}	Handicap +{1}	Handicap +{1}
+^HP: (\d+)/100$	PV : {1}/100	PS: {1}/100	LP: {1}/100	PS: {1}/100	PV: {1}/100
+^(\d+) Turns$	{1} tours	{1} turnos	{1} Runden	{1} turni	{1} turnos
+^(\d+) Turn$	{1} tour	{1} turno	{1} Runde	{1} turno	{1} turno
+^- Less Than (\d+) Casualties$	- Moins de {1} pertes	- Menos de {1} bajas	- Weniger als {1} Verluste	- Meno di {1} perdite	- Menos de {1} baixas
+^- Less Than (\d+) Rounds$	- Moins de {1} rounds	- Menos de {1} rondas	- Weniger als {1} Runden	- Meno di {1} round	- Menos de {1} rodadas
+^Less than (\d+) casualties$	Moins de {1} pertes	Menos de {1} bajas	Weniger als {1} Verluste	Meno di {1} perdite	Menos de {1} baixas
+^Less than (\d+) rounds$	Moins de {1} rounds	Menos de {1} rondas	Weniger als {1} Runden	Meno di {1} round	Menos de {1} rodadas
+^\+(\d+)xp$	+{1} XP	+{1} XP	+{1} EP	+{1} XP	+{1} XP
+^Boosting (.+)$	Boost de {T1}	Mejorando a {T1}	Boost für {T1}	Potenziamento di {T1}	Impulsionando {T1}
+^@b(.+)@n is now available to play in @bChallenge Mode@n and@b Custom Games\.$	@b{T1}@n est maintenant jouable en@b mode défi@n et en@b partie perso.	@b{T1}@n ya está disponible en el@b modo desafío@n y en@b partidas personalizadas.	@b{T1}@n ist jetzt im@b Herausforderungsmodus@n und in@b eigenen Spielen@n spielbar.	@b{T1}@n ora è giocabile in@b modalità sfida@n e nelle@b partite personalizzate.	@b{T1}@n agora pode ser jogado no@b modo desafio@n e em@b jogos personalizados.
+^Re-deploy your living legend,@b (.+)\.$	Redéployez votre légende vivante,@b {1}.	Vuelve a desplegar a tu leyenda viviente,@b {1}.	Setze deine Lebende Legende erneut ein:@b {1}.	Schiera di nuovo la tua leggenda vivente,@b {1}.	Reposicione sua lenda viva,@b {1}.
+^(.+), \$(\d+)$	{T1}, ${2}	{T1}, ${2}	{T1}, ${2}	{T1}, ${2}	{T1}, ${2}
+^(.+) \$(\d+)$	{T1} ${2}	{T1} ${2}	{T1} ${2}	{T1} ${2}	{T1} ${2}
