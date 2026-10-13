@@ -75,7 +75,7 @@ namespace LostFrontierTranslation
             catch (Exception e) { Logger.LogError("Harmony patch failed: " + e); }
 
             SceneManager.sceneLoaded += (s, m) => { nextRefresh = 0; };
-            Camera.onPreCull += OnPreCull;
+            Camera.onPreCull += SweepBeforeRender;
             Logger.LogInfo("Loaded: " + rep + "| current: " + core.CurrentCode + " | key: " + cfgNextKey.Value);
         }
 
@@ -187,11 +187,25 @@ namespace LostFrontierTranslation
         internal string OnPrintText(TextPrint tp, string original)
         {
             if (tp == null) return original;
+            ExcludeRows(tp);
             string eng = core.ToEnglish(original);
             printOriginals[tp.GetInstanceID()] = eng;
             string t = FixGlyphs(core.Translate(eng), PrintFont(tp));
             ApplyShrink(tp, eng, t);
             return t;
+        }
+
+        // The dialogue box meshes belong to the typewriter: make sure the label sweep never touches them,
+        // even if the box appeared after the last refresh of the mesh list.
+        void ExcludeRows(TextPrint tp)
+        {
+            try
+            {
+                foreach (var row in tp.rows)
+                    foreach (var tm in row.textMesh)
+                        if (tm != null && excluded.Add(tm.GetInstanceID())) meshStates.Remove(tm.GetInstanceID());
+            }
+            catch { }
         }
 
         void ApplyShrink(TextPrint tp, string eng, string tr)
@@ -210,7 +224,12 @@ namespace LostFrontierTranslation
                         if (tm == null) continue;
                         int id = tm.GetInstanceID();
                         float bs;
-                        if (!baseCharSize.TryGetValue(id, out bs)) { bs = tm.characterSize; baseCharSize[id] = bs; }
+                        if (!baseCharSize.TryGetValue(id, out bs))
+                        {
+                            // size before any label auto-fit was applied to it
+                            if (!meshBaseSize.TryGetValue(id, out bs)) bs = tm.characterSize;
+                            baseCharSize[id] = bs;
+                        }
                         tm.characterSize = bs * factor;
                     }
             }
@@ -441,7 +460,7 @@ namespace LostFrontierTranslation
             catch (Exception e) { Logger.LogWarning("options click: " + e.Message); }
         }
 
-        void OnPreCull(Camera c) { try { Sweep(); } catch (Exception e) { Logger.LogWarning("sweep: " + e.Message); } }
+        void SweepBeforeRender(Camera c) { try { Sweep(); } catch (Exception e) { Logger.LogWarning("sweep: " + e.Message); } }
 
         void LateUpdate() { try { Sweep(); } catch { } }
 
